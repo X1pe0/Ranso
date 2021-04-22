@@ -1,35 +1,48 @@
 import os
 import sys
 import time
-from threading import Thread
-import threading
-#######################
+import ctypes
+from glob import glob
+#############Globals##############
 
-filename = 'ranso.txt'                                      #File Name.
-logit = 'ranso.log'                                         #In %temp%/ranso.log.
-txt = 'This is a ransomware test file. Please ignore.'      #Text within test file.
+filename = 'ranso.txt'
+logit = 'ranso.log'
+txt = 'This is a ransomware test file. Please ignore.'
+usrs = glob("C:/Users/*")
 
-#######################
+##################################
+try:
+ is_admin = os.getuid() == 0
+except AttributeError:
+    is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+    if is_admin == False:
+        print ("Please run as admin.")
+        exit(0)
 if os.name =="nt":
     pass
 else:
     print ('This tool is for a windows system.')
     exit(0)
-usr = os.environ['USERPROFILE']
-
+def logo():
+    print('''
+ ____                                       
+/\  _`\                                     
+\ \ \L\ \     __      ___     ____    ___   
+ \ \ ,  /   /'__`\  /' _ `\  /',__\  / __`\ 
+  \ \ \\\\ \ /\ \L\.\_/\ \/\ \/\__, `\/\ \L\ \\
+   \ \_\ \_\ \__/.\_\ \_\ \_\/\____/\ \____/
+    \/_/\/ /\/__/\/_/\/_/\/_/\/___/  \/___/ 
+            Ransomware Canary Check \n''')
 def h():
+    logo()
     print ('Args: check, create')
     print ('ranso.py <arg>')
 try:
     var = str(sys.argv[1])
-    try:
-        thread_limit = sys.argv[2]
-    except: 
-        thread_limit = 1
 except:
     h()
     exit(0)
-def main(num):
+def main():
     print ('\n')
     if var == 'create':
         try:
@@ -300,8 +313,16 @@ def main(num):
                 print ('WARNING: Unable to update log.')
     else:
         h()
-threads = []
-for i in range(thread_limit):
-    t = threading.Thread(target=main, args=(i,))
-    threads.append(t)
-    t.start()
+for usr in usrs:
+    if usr == 'C:/Users\\desktop.ini':
+        pass
+    elif usr == 'C:/Users\\All Users':
+        pass
+    elif usr == 'C:/Users\Default User':
+        pass
+    elif usr == 'C:/Users\Default':
+        pass
+    elif usr == 'C:/Users\Public':
+        pass
+    else:
+        main()
