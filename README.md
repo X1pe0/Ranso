@@ -1,11 +1,11 @@
-## Ranso
+# Ranso
 Ransomware Canary Checker
 (ranso.exe built using Nuitka/GCC for Windows. 
 
 ranso.exe check (Check and verify files)
 ranso.exe create (Remove log history and re-create verification files)
 
-# Log Location
+## Log Location
 %TEMP%\ranso.log 
 
 
