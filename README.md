@@ -9,6 +9,8 @@ Realtime watch of canary files on all user profiles on the NT system. Can be ins
 
 Commands can also be sent when a file has been removed/crypted/touched such as 'shutdown' or 'ipconfig /release'.
 
+One click installer: https://github.com/X1pe0/Ranso/raw/master/Ranso.Builds/Ranso.OInstall.exe (Follow the default install path to run as portable background "agent")
+
 ## Config File
 ```
 Line 1: ranso.txt                                                #Name of canary file.
