@@ -5,30 +5,42 @@ import ctypes
 import subprocess
 from glob import glob
 from datetime import datetime
-#############Globals##############
-
-filename = 'ranso.txt'                                                 #Canary file name.
-logit = 'ranso.log'                                                    #Log file name (C:\ranso.log).
-txt = 'This is a ransomware test file. Please ignore.'                 #Content of canary file.
-usrs = glob("C:/Users/*")                                              #Gather all user folders.
-debug = False                                                          #Debug mode (Shows output).
-com_when_detect = ''                                                   #Command to run when detected.
-hidden = True                                                          #Want file to be hidden from users?
-scanrate = 1                                                           #Scan canary files every X seconds.
-
-##################################
+print 'Reading config...'
+fn2 = 'ranso.config'
 try:
- is_admin = os.getuid() == 0
-except AttributeError:
-    is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
-    if is_admin == False:
-        print ("Please run as admin.")
-        exit(0)
-if os.name =="nt":
+    ranconf = open(fn2,'r')
+    lines = ranconf.read().split('\n')
+except:
+    print ('Unable to read config. Using defaults...')
+try:
+    filename = lines[0]
+except:
+    filename = 'ranso.txt'
     pass
-else:
-    print ('This tool is for a windows system.')
-    exit(0)
+try:
+	logit = str(lines[1])
+except:
+	logit = 'ranso.log'   
+try:
+	txt = str(lines[2])
+except:
+	txt = 'This is a ransomware test file. Please ignore.'
+try:
+    debug = bool(lines[3])
+except:
+	debug = False
+try:
+	com_when_detect = str(lines[4])
+except:
+	com_when_detect = '' 
+try:
+	hidden = bool(lines[5])
+except:
+	hidden = True
+try:
+    scanrate = int(lines[6])
+except:
+	scanrate = 1  
 def logo():
     print('''
  ____                                       
@@ -39,6 +51,45 @@ def logo():
    \ \_\ \_\ \__/.\_\ \_\ \_\/\____/\ \____/
     \/_/\/ /\/__/\/_/\/_/\/_/\/___/  \/___/ 
             Ransomware Canary Check \n''')
+if debug == True:
+    if os.name =="nt": 
+	    os.system("cls")
+    else: 
+	    os.system("clear")
+    logo()
+    print ('---------Current Config---------')
+    print (str(filename) + '\n' + str(logit) + '\n' + str(txt) + '\n' + str(com_when_detect) + '\n' + str(hidden) + '\n' + str(scanrate))
+    print ('--------------------------------')
+    print ('Starting in 10 seconds...')
+    time.sleep(10)
+if os.name =="nt": 
+    os.system("cls")
+else: 
+    os.system("clear")
+#############Globals##############
+
+#filename = 'ranso.txt'                                                 #Canary file name.
+#logit = 'ranso.log'                                                    #Log file name (C:\ranso.log).
+#txt = 'This is a ransomware test file. Please ignore.'                 #Content of canary file.
+usrs = glob("C:/Users/*")                                               #Gather all user folders.
+#debug = False                                                          #Debug mode (Shows output).
+#com_when_detect = ''                                                   #Command to run when detected.
+#hidden = True                                                          #Want file to be hidden from users?
+#scanrate = 1                                                           #Scan canary files every X seconds.
+
+##################################
+try:
+ is_admin = os.getuid() == 0
+except AttributeError:
+    is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+    if is_admin == False:
+        ctypes.windll.shell32.ShellExecuteW(None, u"runas", unicode(sys.executable), unicode(" ".join(sys.argv)), None, 1)
+        exit(0)
+if os.name =="nt":
+    pass
+else:
+    print ('This tool is for a windows system.')
+    exit(0)
 def h():
     logo()
     print ('Args: create')
@@ -113,12 +164,7 @@ def main():
                 print ('Unable to create test files. Invalid permissions or disk space full.')  
             exit(0)   
     else:
-        try:
-            f = open("C:/%s"%(logit), "w")
-            f.write('')
-            f.close()
-        except:
-            print ('WARNING: Unable to clear log file...')
+        
         try:
             checkit = open("%s/%s"%(usr,filename))
             line = checkit.read().replace("\n", " ")
