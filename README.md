@@ -11,6 +11,8 @@ Commands can also be sent when a file has been removed/crypted/touched such as '
 
 One click installer: https://github.com/X1pe0/Ranso/raw/master/Ranso.Builds/Ranso.OInstall.exe (Follow the default install path to run as portable background "agent")
 
+"Plugins" can also be used by adding a standard PY file within the 'ransoplugins' folder. (Not needed and will run w/o plugins)
+
 ## Config File
 ```
 Line 1: ranso.txt                                                #Name of canary file.
