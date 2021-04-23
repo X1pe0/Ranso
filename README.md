@@ -7,6 +7,8 @@ Realtime watch of canary files on all user profiles on the NT system. Can be ins
 
 'C:\User\Example~> ranso.exe create' (Remove log history and re-create verification files)
 
+Commands can also be sent when a file has been removed/crypted/touched such as 'shutdown' or 'ipconfig /release'.
+
 ## Log Location
 
 C:\ranso.log 
