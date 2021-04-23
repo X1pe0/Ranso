@@ -9,6 +9,16 @@ Realtime watch of canary files on all user profiles on the NT system. Can be ins
 
 Commands can also be sent when a file has been removed/crypted/touched such as 'shutdown' or 'ipconfig /release'.
 
+## Config File
+
+Line 1: ranso.txt                                                #Name of canary file.
+Line 2: ranso.log                                                #Name of log file.
+Line 3: This is a ransomware test file. Please ignore.           #Text within canary file.
+Line 4:                                                          #Debug Mode. (True/False)
+Line 5: echo "Detected!"                                         #Command to be ran when detected.
+Line 6:                                                          #Canary files hidden? (True/False)
+Line 7: 1                                                        #How many X Seconds to check files.
+
 ## Log Location
 
 C:\ranso.log 
@@ -18,6 +28,8 @@ C:\ranso.log
 ![](https://nabyte.com/imgs/49bdd383b24a710b6b4d6654f0e987ee88ef7b56Capture.png)
 
 ![](https://nabyte.com/imgs/759903be5d268eb0646ef259905b855f722e4747p2.png)
+
+![](https://nabyte.com/imgs/76e58323f5d73a4f587af5921fe73f4f83c6a200p3.png)
 
 ## Folder Locations (All users on the Windows System.)
 
