@@ -1,10 +1,13 @@
 import os
-import sys
+import sys, imp
 import time
 import ctypes
 import subprocess
-from glob import glob
+import glob
 from datetime import datetime
+import importdir
+from types import ModuleType
+from os import walk
 print 'Reading config...'
 fn2 = 'ranso.config'
 try:
@@ -62,22 +65,9 @@ if debug == True:
     print ('--------------------------------')
     print ('Starting in 10 seconds...')
     time.sleep(10)
-if os.name =="nt": 
-    os.system("cls")
-else: 
-    os.system("clear")
-#############Globals##############
 
-#filename = 'ranso.txt'                                                 #Canary file name.
-#logit = 'ranso.log'                                                    #Log file name (C:\ranso.log).
-#txt = 'This is a ransomware test file. Please ignore.'                 #Content of canary file.
-usrs = glob("C:/Users/*")                                               #Gather all user folders.
-#debug = False                                                          #Debug mode (Shows output).
-#com_when_detect = ''                                                   #Command to run when detected.
-#hidden = True                                                          #Want file to be hidden from users?
-#scanrate = 1                                                           #Scan canary files every X seconds.
+usrs = glob.glob("C:/Users/*")                                               #Gather all user folders.
 
-##################################
 try:
  is_admin = os.getuid() == 0
 except AttributeError:
@@ -524,5 +514,10 @@ while True:
         elif usr == 'C:/Users\Public':
             pass
         else:
+            try:
+                for fnn in glob.glob("ransoplugins/*.py"):
+                    execfile (fnn)
+            except:
+                pass
             time.sleep(scanrate)
             main()
