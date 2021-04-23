@@ -1,13 +1,15 @@
 # Ranso
 Ransomware Canary Checker
-(ranso.exe built using Nuitka/GCC for Windows. 
 
-'C:\User\Example~> ranso.exe check' (Check and verify files)
+Realtime watch of canary files on all user profiles on the NT system. Can be installed as a service via NSSM and or included in the build is a background VBS that can be added to startup via registry. A config file is also used (has to be within the same directory as the EXE). Ranso.exe built using Nuitka/GCC for Windows. 
+
+'C:\User\Example~> ranso.exe' (Realtime check and verify files)
 
 'C:\User\Example~> ranso.exe create' (Remove log history and re-create verification files)
 
 ## Log Location
-%TEMP%\ranso.log 
+
+C:\ranso.log 
 
 ## Images
 
