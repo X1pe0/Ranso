@@ -5,7 +5,6 @@ import ctypes
 import subprocess
 import glob
 from datetime import datetime
-import importdir
 from types import ModuleType
 from os import walk
 print 'Reading config...'
