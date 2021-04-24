@@ -1,0 +1,12 @@
+#define DLL_EXTRA_PATH "c:\\users\\bitnix-a\\desktop\\py"
+#define NO_PYTHON_WARNINGS 0
+#define PYTHON_HOME_PATH "C:\\Users\\bitnix-a\\Desktop\\py"
+#define SYSFLAG_BYTES_WARNING 0
+#define SYSFLAG_DIVISION_WARNING 0
+#define SYSFLAG_NO_RANDOMIZATION 0
+#define SYSFLAG_NO_SITE 0
+#define SYSFLAG_OPTIMIZE 0
+#define SYSFLAG_PY3K_WARNING 0
+#define SYSFLAG_UNICODE 0
+#define SYSFLAG_UTF8 0
+#define SYSFLAG_VERBOSE 0
